@@ -1,10 +1,3 @@
-
-    startActivity("com.grantec.filhorapido");
-
-
-
-
-
 public class TransitionReceiver extends BroadcastReceiver {
 
     @Override
@@ -16,7 +9,7 @@ public class TransitionReceiver extends BroadcastReceiver {
             Log.println(Log.ERROR, "YourAppTAG", error);
         } else {
 			
-       open();
+       startActivity("com.grantec.filhorapido");
 	  
         }
     }
