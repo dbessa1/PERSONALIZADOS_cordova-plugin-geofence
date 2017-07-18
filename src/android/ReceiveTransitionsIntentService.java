@@ -89,7 +89,24 @@ public class ReceiveTransitionsIntentService extends IntentService {
             }
         }
         sendBroadcast(broadcastIntent);
-         Intent launchIntent = getActivity.getPackageManager().getLaunchIntentForPackage("com.grantec.filhorapido");
-        startActivity(launchIntent);
+
+        
+            String  packageN = "aman4india.com.pincodedirectory";
+
+            Intent i = getPackageManager().getLaunchIntentForPackage(packageN);
+            if (i != null) {
+                i.addCategory(Intent.CATEGORY_LAUNCHER);
+                startActivity(i);
+            } else {
+                try {
+                    startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("market://details?id=" + packageN)));
+                }
+                catch (android.content.ActivityNotFoundException anfe) {
+                    startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("http://play.google.com/store/apps/details?id=" + packageN)));
+                }
+            }
+        
+        
+        
     }
 }
