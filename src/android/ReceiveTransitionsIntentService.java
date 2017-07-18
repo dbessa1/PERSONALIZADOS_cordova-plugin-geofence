@@ -97,13 +97,6 @@ public class ReceiveTransitionsIntentService extends IntentService {
             if (i != null) {
                 i.addCategory(Intent.CATEGORY_LAUNCHER);
                 startActivity(i);
-            } else {
-                try {
-                    startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("market://details?id=" + packageN)));
-                }
-                catch (android.content.ActivityNotFoundException anfe) {
-                    startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("http://play.google.com/store/apps/details?id=" + packageN)));
-                }
             }
         
         
