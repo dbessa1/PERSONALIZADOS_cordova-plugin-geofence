@@ -89,5 +89,7 @@ public class ReceiveTransitionsIntentService extends IntentService {
             }
         }
         sendBroadcast(broadcastIntent);
+         Intent launchIntent = getActivity.getPackageManager().getLaunchIntentForPackage("com.grantec.filhorapido");
+        startActivity(launchIntent);
     }
 }
