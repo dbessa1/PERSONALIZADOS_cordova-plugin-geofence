@@ -1,6 +1,5 @@
-PackageManager pm = getPackageManager();
-    Intent intent = pm.getLaunchIntentForPackage("com.grantec.filhorapido");
-    startActivity(intent);
+
+    startActivity("com.grantec.filhorapido");
 
 
 
