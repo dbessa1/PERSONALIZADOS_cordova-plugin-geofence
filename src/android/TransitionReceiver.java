@@ -1,3 +1,6 @@
+import com.cowbell.cordova.geofence.Gson;
+import com.cowbell.cordova.geofence.GeoNotification;
+
 public class TransitionReceiver extends BroadcastReceiver {
 
     @Override
@@ -8,9 +11,9 @@ public class TransitionReceiver extends BroadcastReceiver {
             //handle error
             Log.println(Log.ERROR, "YourAppTAG", error);
         } else {
-			
-       startActivity("com.grantec.filhorapido");
-	  
+            String geofencesJson = intent.getStringExtra("transitionData");
+            GeoNotification[] geoNotifications = Gson.get().fromJson(geofencesJson, GeoNotification[].class);
+            //handle geoNotifications objects
         }
     }
 }
