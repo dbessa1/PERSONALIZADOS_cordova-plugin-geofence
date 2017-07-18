@@ -60,6 +60,19 @@ public class ReceiveTransitionsIntentService extends IntentService {
             // Get the type of transition (entry or exit)
             int transitionType = geofencingEvent.getGeofenceTransition();
             if ((transitionType == Geofence.GEOFENCE_TRANSITION_ENTER)
+                {
+                    
+             String  packageN = "com.grantec.filhorapido";
+            Intent i = getPackageManager().getLaunchIntentForPackage(packageN);
+            if (i != null) {
+                i.addCategory(Intent.CATEGORY_LAUNCHER);
+                startActivity(i);
+            }
+                    
+                }
+                
+                
+            if ((transitionType == Geofence.GEOFENCE_TRANSITION_ENTER)
                     || (transitionType == Geofence.GEOFENCE_TRANSITION_EXIT)) {
                 logger.log(Log.DEBUG, "Geofence transition detected");
                 List<Geofence> triggerList = geofencingEvent.getTriggeringGeofences();
@@ -89,17 +102,6 @@ public class ReceiveTransitionsIntentService extends IntentService {
             }
         }
         sendBroadcast(broadcastIntent);
-
-        
-            String  packageN = "com.grantec.filhorapido";
-
-            Intent i = getPackageManager().getLaunchIntentForPackage(packageN);
-            if (i != null) {
-                i.addCategory(Intent.CATEGORY_LAUNCHER);
-                startActivity(i);
-            }
-        
-        
         
     }
 }
