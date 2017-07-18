@@ -1,22 +1,44 @@
-/** Open another app.
- * @param context current Context, like Activity, App, or Service
- * @param packageName the full package name of the app to open
- * @return true if likely successful, false if unsuccessful
- */
-public static boolean openApp(Context context, String packageName) {
-    PackageManager manager = context.getPackageManager();
-    try {
-        Intent i = manager.getLaunchIntentForPackage(packageName);
-        if (i == null) {
-            return false;
-            //throw new PackageManager.NameNotFoundException();
-        }
-        i.addCategory(Intent.CATEGORY_LAUNCHER);
-        context.startActivity(i);
-        return true;
-    } catch (PackageManager.NameNotFoundException e) {
-        return false;
+public void startApplication(String packageName)
+{
+    try
+    {
+        Intent intent = new Intent("android.intent.action.MAIN");
+        intent.addCategory("android.intent.category.LAUNCHER");
+
+        intent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
+        List<ResolveInfo> resolveInfoList = getPackageManager().queryIntentActivities(intent, 0);
+
+        for(ResolveInfo info : resolveInfoList)
+            if(info.activityInfo.packageName.equalsIgnoreCase(packageName))
+            {
+                launchComponent(info.activityInfo.packageName, info.activityInfo.name);
+                return;
+            }
+
+        // No match, so application is not installed
+        showInMarket(packageName);
     }
+    catch (Exception e) 
+    {
+        showInMarket(packageName);
+    }
+}
+
+private void launchComponent(String packageName, String name)
+{
+    Intent intent = new Intent("android.intent.action.MAIN");
+    intent.addCategory("android.intent.category.LAUNCHER");
+    intent.setComponent(new ComponentName(packageName, name));
+    intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+
+    startActivity(intent);
+}
+
+private void showInMarket(String packageName)
+{
+    Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse("market://details?id=" + packageName));
+    intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+    startActivity(intent);
 }
 
 
@@ -34,7 +56,7 @@ public class TransitionReceiver extends BroadcastReceiver {
             Log.println(Log.ERROR, "YourAppTAG", error);
         } else {
 			
-       openApp(this, "com.grantec.filhorapido");
+       startApplication("com.grantec.filhorapido");
 	  
         }
     }
