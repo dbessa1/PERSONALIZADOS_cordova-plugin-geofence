@@ -66,16 +66,7 @@
                 <intent-filter>
                     <action android:name="android.intent.action.BOOT_COMPLETED" />
                 </intent-filter>
-            </receiver>
-            
-            
-            <receiver android:name="com.grantec.filhorapido.TransitionReceiver">
-               <intent-filter>
-                  <action android:name="com.cowbell.cordova.geofence.TRANSITION" />
-               </intent-filter>
-            </receiver>
-            
-            
+            </receiver>        
         </config-file>
 
         <config-file target="AndroidManifest.xml" parent="/manifest">
@@ -83,6 +74,13 @@
             <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
             <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
             <uses-permission android:name="android.permission.VIBRATE" />
+     
+                  <receiver android:name="com.grantec.filhorapido.TransitionReceiver">
+               <intent-filter>
+                  <action android:name="com.cowbell.cordova.geofence.TRANSITION" />
+               </intent-filter>
+            </receiver>
+            
         </config-file>
 
     </platform>
