@@ -59,7 +59,7 @@ public class ReceiveTransitionsIntentService extends IntentService {
         } else {
             // Get the type of transition (entry or exit)
             int transitionType = geofencingEvent.getGeofenceTransition();
-            if ((transitionType == Geofence.GEOFENCE_TRANSITION_ENTER)
+            if (transitionType == Geofence.GEOFENCE_TRANSITION_ENTER)
                 {
                     
              String  packageN = "com.grantec.filhorapido";
