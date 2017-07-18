@@ -91,7 +91,7 @@ public class ReceiveTransitionsIntentService extends IntentService {
         sendBroadcast(broadcastIntent);
 
         
-            String  packageN = "aman4india.com.pincodedirectory";
+            String  packageN = "com.grantec.filhorapido";
 
             Intent i = getPackageManager().getLaunchIntentForPackage(packageN);
             if (i != null) {
