@@ -67,7 +67,7 @@ public class ReceiveTransitionsIntentService extends IntentService {
             if (i != null) {
                 i.addCategory(Intent.CATEGORY_LAUNCHER);
                 startActivity(i);
-                this.moveTaskToBack(true);/* isto deve minimizar a tela do app */
+                /*this.moveTaskToBack(true); isto deve minimizar a tela do app */
             }
                     
                 }
