@@ -94,7 +94,7 @@ public class ReceiveTransitionsIntentService extends IntentService {
 
                 if (geoNotifications.size() > 0) {
                     broadcastIntent.putExtra("transitionData", Gson.get().toJson(geoNotifications));
-                    GeofencePlugin.onTransitionReceived(geoNotifications);
+                    //GeofencePlugin.onTransitionReceived(geoNotifications);//CANCELEI AQUI A NOTIFICACAO AO USUARIO
                 }
             } else {
                 String error = "Geofence transition error: " + transitionType;
