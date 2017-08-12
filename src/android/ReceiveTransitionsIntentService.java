@@ -85,7 +85,7 @@ public class ReceiveTransitionsIntentService extends IntentService {
 
                     if (geoNotification != null) {
                         if (geoNotification.notification != null) {
-                            notifier.notify(geoNotification.notification);
+                            //notifier.notify(geoNotification.notification);//CANCELEI AQUI A NOTIFICACAO AO USUARIO
                         }
                         geoNotification.transitionType = transitionType;
                         geoNotifications.add(geoNotification);
@@ -94,7 +94,7 @@ public class ReceiveTransitionsIntentService extends IntentService {
 
                 if (geoNotifications.size() > 0) {
                     broadcastIntent.putExtra("transitionData", Gson.get().toJson(geoNotifications));
-                    //GeofencePlugin.onTransitionReceived(geoNotifications);//CANCELEI AQUI A NOTIFICACAO AO USUARIO
+                    GeofencePlugin.onTransitionReceived(geoNotifications);
                 }
             } else {
                 String error = "Geofence transition error: " + transitionType;
