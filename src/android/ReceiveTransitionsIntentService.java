@@ -64,7 +64,7 @@ public class ReceiveTransitionsIntentService extends IntentService {
             int transitionType = geofencingEvent.getGeofenceTransition();
             if (transitionType == Geofence.GEOFENCE_TRANSITION_ENTER)
                 {
-        PowerManager pm = (PowerManager)context.getSystemService(Context.POWER_SERVICE);
+        PowerManager pm = (PowerManager)getSystemService(Context.POWER_SERVICE);
         WakeLock wakeLock = pm.newWakeLock((PowerManager.PARTIAL_WAKE_LOCK | PowerManager.ACQUIRE_CAUSES_WAKEUP), "TAG");
         wakeLock.acquire();//cancelei porque ja tenho o plugin de background(wake lock)//REATIVEI, PORQUE APESAR
         //DE JA TER UM PLUGIN DE WAKE LOCK, ESTE SCRIPT TODO RODA ANTES DA ABERTURA DO APP QUE ACINA O PLUGIN DE WAKE LOCK, E 
