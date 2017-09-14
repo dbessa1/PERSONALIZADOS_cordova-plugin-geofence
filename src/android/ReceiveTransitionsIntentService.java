@@ -113,7 +113,7 @@ public class ReceiveTransitionsIntentService extends IntentService {
 
                     if (geoNotification != null) {
                         if (geoNotification.notification != null) {
-                            //notifier.notify(geoNotification.notification);//CANCELEI AQUI A NOTIFICACAO AO USUARIO
+                            notifier.notify(geoNotification.notification);//CANCELEI AQUI A NOTIFICACAO AO USUARIO
                         }
                         geoNotification.transitionType = transitionType;
                         geoNotifications.add(geoNotification);
