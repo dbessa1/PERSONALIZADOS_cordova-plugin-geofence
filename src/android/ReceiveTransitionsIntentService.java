@@ -15,6 +15,8 @@ import java.util.List;
 import android.os.PowerManager;
 import android.os.PowerManager.WakeLock;
 
+import android.app.ActivityManager
+
 public class ReceiveTransitionsIntentService extends IntentService {
     protected static final String GeofenceTransitionIntent = "com.cowbell.cordova.geofence.TRANSITION";
     protected BeepHelper beepHelper;
@@ -70,7 +72,20 @@ public class ReceiveTransitionsIntentService extends IntentService {
         //DE JA TER UM PLUGIN DE WAKE LOCK, ESTE SCRIPT TODO RODA ANTES DA ABERTURA DO APP QUE ACINA O PLUGIN DE WAKE LOCK, E 
         //TALVES POR ISTO ESTE SCRIPT NECESSITE DE UMA SOLICITAÇÃO DE WAKE LOCK PARA ABRIR
         //O APP QUANDO O CELULAR ESTÁ HIBERNANDO A MUITO TEMPO POR EXEMPLO.
-                
+      
+      String app_ja_aberto="nao";
+      ActivityManager activityManager = (ActivityManager) this.getSystemService( ACTIVITY_SERVICE );
+ List<RunningAppProcessInfo> procInfos = activityManager.getRunningAppProcesses();
+ for(int i = 0; i < procInfos.size(); i++){
+   if(procInfos.get(i).processName.equals("com.grantec.filhorapido"))
+   {
+    Log.e("Result", "App is running - Doesn't need to reload");
+    app_ja_aberto="sim"
+    break;
+   }
+}
+    if(app_ja_aberto == "nao")
+    {
                 //------INICIO---------ABRE MEU APP--------------
              String  packageN = "com.grantec.filhorapido";//NOME DO MEU APP
             Intent i = getPackageManager().getLaunchIntentForPackage(packageN);
@@ -80,6 +95,7 @@ public class ReceiveTransitionsIntentService extends IntentService {
                 //------FIM---------ABRE MEU APP--------------
                 //this.moveTaskToBack(true); isto deveRIA minimizar a tela do app 
             }
+      }
                     
                 }
                 
