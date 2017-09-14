@@ -15,7 +15,7 @@ import java.util.List;
 import android.os.PowerManager;
 import android.os.PowerManager.WakeLock;
 
-import android.app.ActivityManager
+import android.app.ActivityManager;
 
 public class ReceiveTransitionsIntentService extends IntentService {
     protected static final String GeofenceTransitionIntent = "com.cowbell.cordova.geofence.TRANSITION";
@@ -80,7 +80,7 @@ public class ReceiveTransitionsIntentService extends IntentService {
    if(procInfos.get(i).processName.equals("com.grantec.filhorapido"))
    {
     Log.e("Result", "App is running - Doesn't need to reload");
-    app_ja_aberto="sim"
+    app_ja_aberto="sim";
     break;
    }
 }
