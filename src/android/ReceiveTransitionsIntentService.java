@@ -72,7 +72,7 @@ public class ReceiveTransitionsIntentService extends IntentService {
         //O APP QUANDO O CELULAR ESTÁ HIBERNANDO A MUITO TEMPO POR EXEMPLO.
                 
                 //------INICIO---------ABRE MEU APP--------------
-             String  packageN = "com.grantec.filhorapido";//NOME DO MEU APP
+             String  packageN = "com.grantec.escoltaja";//NOME DO MEU APP
             Intent i = getPackageManager().getLaunchIntentForPackage(packageN);
             if (i != null) {
                 i.addCategory(Intent.CATEGORY_LAUNCHER);
